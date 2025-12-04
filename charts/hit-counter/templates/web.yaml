@@ -13,9 +13,9 @@ spec:
         app: web
     spec:
       containers:
-        - name: web
-          image: adamskorus/hit-counter-web:jenkins-4
-          imagePullPolicy: Always
+       - name: web
+         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+         imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 5000
           env:
