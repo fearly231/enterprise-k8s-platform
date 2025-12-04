@@ -1,4 +1,4 @@
 image:
   repository: adamskorus/hit-counter
-  tag: "v1"
+  tag: "jenkins-15"
   pullPolicy: Always
