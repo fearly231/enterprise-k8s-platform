@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: web
-          image: hit-counter:v2
-          imagePullPolicy: Never
+          image: adamskorus/hit-counter-web:jenkins-4
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
           env:
