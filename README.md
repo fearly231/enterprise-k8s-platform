@@ -19,25 +19,24 @@ The platform features a **Self-Hosted CI Server (Jenkins)** running inside Kuber
 ## 🏗️ System Architecture
 
 The project demonstrates a full **GitOps** workflow using **Jenkins** for Continuous Integration and **ArgoCD** for Continuous Delivery.
-
 ```mermaid
 graph TD
-    Dev((Developer)) -->|Push Code| Git[GitHub Repository]
-    
+    Dev((Developer)) -->|"Push Code"| Git[GitHub Repository]
+
     subgraph "Continuous Integration (CI Cluster)"
         Git -->|Webhook| Jenkins[Jenkins Controller]
-        Jenkins -->|Spawn Pod| Agent[Dynamic K8s Agent]
-        Agent -->|Build (Kaniko)| DockerHub[Docker Hub Registry]
-        Agent -->|Update Version| GitConfig[Git Helm Values]
+        Jenkins -->|"Spawn Pod"| Agent[Dynamic K8s Agent]
+        Agent -->|"Build (Kaniko)"| DockerHub[Docker Hub Registry]
+        Agent -->|"Update Version"| GitConfig[Git Helm Values]
     end
-    
+
     subgraph "Continuous Delivery (CD Cluster)"
         ArgoCD[ArgoCD Controller] -->|Watch| GitConfig
         ArgoCD -->|Sync| K8s[Production Cluster]
-        K8s -->|Pull Image| DockerHub
+        K8s -->|"Pull Image"| DockerHub
     end
-```
 
+```
 ---
 
 ## 🚀 Key Features & Competencies
@@ -99,7 +98,7 @@ The screenshots below present key system elements in action.
 
 | Jenkins Dynamic Agents | ArgoCD GitOps Sync |
 | :---: | :---: |
-| <img src="[https://via.placeholder.com/400x200?text=INSERT_JENKINS_SCREENSHOT](https://via.placeholder.com/400x200?text=INSERT_JENKINS_SCREENSHOT)" width="100%" alt="Jenkins"> | <img src="[https://via.placeholder.com/400x200?text=INSERT_ARGOCD_SCREENSHOT](https://via.placeholder.com/400x200?text=INSERT_ARGOCD_SCREENSHOT)" width="100%" alt="ArgoCD"> |
+| <img width="1027" height="842" alt="image" src="https://github.com/user-attachments/assets/bd059727-55bc-4dca-a835-1d0e53f6eaf2" /> | [<img width="1196" height="826" alt="Screenshot 2025-12-04 at 7 38 33 PM" src="https://github.com/user-attachments/assets/ab2662b3-9703-4c60-aaea-27289667df4a" /> |
 | *Jenkins spawning a temporary Pod to execute the pipeline.* | *ArgoCD visualizing the application tree and sync status.* |
 
 ---
