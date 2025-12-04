@@ -1,0 +1,4 @@
+image:
+  repository: adamskorus/hit-counter
+  tag: "v1"
+  pullPolicy: Always
